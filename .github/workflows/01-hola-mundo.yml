@@ -1,0 +1,33 @@
+name: Mi Primer CI/CD
+description: "Un workflow simple para saludar al mundo y hacer un test matemático."
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/01-hola-mundo.yml'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  saludar:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 📥 Descargar código
+      uses: actions/checkout@v4
+
+    - name: 👋 ¡Hola mundo DevOps!
+      run: |
+        echo "¡Hola DevOps! 🚀"
+        date
+        uname -a
+
+    - name: 🧪 Test Matemático
+      run: |
+        if [ $((2+2)) -eq 4 ]; then
+          echo "✅ Todo OK"
+        else
+          echo "❌ Algo falló"
+          exit 1
+        fi
