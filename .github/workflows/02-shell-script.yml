@@ -1,4 +1,4 @@
-name: Ejercicio 1 - Shell Script
+name: 02-Shell Script
 
 on:
   push:
@@ -14,5 +14,5 @@ jobs:
 
       - name: Dar permisos y ejecutar el script
         run: |
-          chmod +x ejercicios/ejercicio1/script.sh
-          ./ejercicios/ejercicio1/script.sh
+          chmod +x ./02-shell-script/script.sh
+          ./02-shell-script/script.sh
