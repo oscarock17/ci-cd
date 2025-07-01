@@ -1,4 +1,4 @@
-name: Mi Primer CI/CD
+name: 01-Mi Primer CI/CD
 description: "Un workflow simple para saludar al mundo y hacer un test matemático."
 
 on:

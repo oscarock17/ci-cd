@@ -1,4 +1,4 @@
-name: Variables DevOps
+name: 03-Variables DevOps
 
 on:
   push:
