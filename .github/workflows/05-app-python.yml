@@ -32,7 +32,7 @@ jobs:
 
     - name: Ejecutar con cobertura
       run: |
-        PYTHONPATH=05-mi-app-python/app.py --cov-report=term --cov-report=html 05-mi-app-python/tests/
+        PYTHONPATH=05-mi-app-python pytest --cov=05-mi-app-python/app.py --cov-report=term --cov-report=html 05-mi-app-python/tests/
 
     - name: Guardar reporte
       uses: actions/upload-artifact@v4
