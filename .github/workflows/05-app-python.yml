@@ -5,8 +5,7 @@ on:
     branches: [main, master, develop]
     paths:
       - '.github/workflows/05-app-python.yml'
-      - 'app/**'
-      - 'tests/**'
+      - '05-mi-app-python/**'
   pull_request:
     branches: [master]
 
@@ -25,24 +24,24 @@ jobs:
 
     - name: Instalar dependencias
       run: |
-        pip install -r ./05-app-python/requirements.txt 
+        pip install -r 05-mi-app-python/requirements.txt
 
     - name: Ejecutar tests
       run: |
-        pytest tests/ -v
+        pytest 05-mi-app-python/tests/ -v
 
     - name: Ejecutar con cobertura
       run: |
-        pytest --cov=app --cov-report=term --cov-report=html
+        pytest --cov=05-mi-app-python/app.py --cov-report=term --cov-report=html 05-mi-app-python/tests/
 
     - name: Guardar reporte
       uses: actions/upload-artifact@v4
       with:
         name: coverage-report
         path: htmlcov/
-    
+
     - name: Verificar app corriendo
       run: |
-        timeout 10 python app.py &
+        timeout 10 python 05-mi-app-python/app.py &
         sleep 5
         curl -f http://localhost:5000/health
