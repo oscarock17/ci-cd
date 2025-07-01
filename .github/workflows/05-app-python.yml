@@ -2,11 +2,11 @@ name: 05-CI Básico Python
 
 on:
   push:
-    branches: [master, develop]
+    branches: [main, master, develop]
     paths:
-      -'.github/workflows/05-app-python.yml'
-      -'app/**'
-      -'tests/**'
+      - '.github/workflows/05-app-python.yml'
+      - 'app/**'
+      - 'tests/**'
   pull_request:
     branches: [master]
 
