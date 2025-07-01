@@ -28,11 +28,11 @@ jobs:
 
     - name: Ejecutar tests
       run: |
-        pytest 05-mi-app-python/tests/ -v
+        PYTHONPATH=05-mi-app-python pytest 05-mi-app-python/tests/ -v
 
     - name: Ejecutar con cobertura
       run: |
-        pytest --cov=05-mi-app-python/app.py --cov-report=term --cov-report=html 05-mi-app-python/tests/
+        PYTHONPATH=05-mi-app-python/app.py --cov-report=term --cov-report=html 05-mi-app-python/tests/
 
     - name: Guardar reporte
       uses: actions/upload-artifact@v4
