@@ -48,7 +48,8 @@ jobs:
     - name: Build Docker
       uses: docker/build-push-action@v5
       with:
-        context: .
+        context: ./06-mi-app-docker
+        file: ./06-mi-app-docker/Dockerfile
         load: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
@@ -66,7 +67,8 @@ jobs:
       if: github.event_name != 'pull_request'
       uses: docker/build-push-action@v5
       with:
-        context: .
+        context: ./06-mi-app-docker
+        file: ./06-mi-app-docker/Dockerfile
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
