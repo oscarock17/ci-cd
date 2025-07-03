@@ -1,0 +1,22 @@
+name: 07-Test en Self-hosted
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - '.github/workflows/07-self-hosted-test.yml'
+  workflow_dispatch:
+
+jobs:
+  test-local:
+    runs-on: [self-hosted]
+
+    steps:
+    - name: Clonar código
+      uses: actions/checkout@v4
+
+    - name: Info del sistema
+      run: |
+        echo "🏠 Hostname: $(hostname)"
+        echo "🔧 Usuario: $(whoami)"
+        echo "🕓 Fecha: $(date)"
