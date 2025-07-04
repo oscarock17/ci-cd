@@ -41,6 +41,7 @@ jobs:
         context: ./07-app-nodejs-docker
         file: ./07-app-nodejs-docker/Dockerfile
         load: true
+        push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
 
