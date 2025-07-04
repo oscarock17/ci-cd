@@ -51,7 +51,7 @@ jobs:
 
     - name: Probar servicio
       run: |
-        slepp 10
+        sleep 10
         curl -f http://localhost:3000/health
 
     - name: Ver contenedores activos
