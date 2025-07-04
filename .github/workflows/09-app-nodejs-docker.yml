@@ -52,7 +52,7 @@ jobs:
     - name: Probar servicio
       run: |
         sleep 10
-        curl -f http://localhost:3000/health
+        curl -f http://localhost:3000/api/health
 
     - name: Ver contenedores activos
-      run: docker ps 
+      run: docker ps
