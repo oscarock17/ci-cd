@@ -31,7 +31,7 @@ router.get('/users', async (req, res) => {
 });
 
 router.get('/test', (req, res) => {
-  res.send('prueba de ruta /test ci/cd');
+  res.send('prueba de ruta ci/cd');
 });
 
 
