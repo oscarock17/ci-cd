@@ -30,6 +30,10 @@ router.get('/users', async (req, res) => {
   }
 });
 
+router.get('/test', (req, res) => {
+    res.status(200).json({ status: 'OK' });
+});
+
 
 
 module.exports = router;
