@@ -1,0 +1,58 @@
+name: 09-App nodejs docker
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - '.github/workflows/09-app-nodejs-docker.yml'
+      - '07-app-nodejs-docker/**'
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: app-nodejs
+
+jobs:
+  docker-build:
+    runs-on: [self-hosted]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Login en GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Extraer metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        tags: |
+          type=sha
+          type=raw,value=latest,enable={{is_default_branch}}
+
+    - name: Build and Push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./07-app-nodejs-docker
+        file: ./07-app-nodejs-docker/Dockerfile
+        load: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+
+    - name: Levantar servicios con docker compose
+      run: |
+        cd 07-app-nodejs-docker
+        docker compose up -d --build
+
+    - name: Probar servicio
+      run: |
+        slepp 10
+        curl -f http://localhost:3000/health
+
+    - name: Ver contenedores activos
+      run: docker ps 
