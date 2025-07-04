@@ -1,0 +1,22 @@
+{
+  "name": "07-app-nodejs-docker",
+  "version": "1.0.0",
+  "description": "A simple Node.js application with PostgreSQL, Redis cache, and Nginx reverse proxy.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "license": "MIT"
+}
