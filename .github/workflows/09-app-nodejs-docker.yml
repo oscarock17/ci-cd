@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: app-nodejs
+  IMAGE_NAME: ${{ github.repository_owner }}/app-nodejs
 
 jobs:
   docker-build:
