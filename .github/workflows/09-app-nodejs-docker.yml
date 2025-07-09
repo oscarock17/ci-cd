@@ -19,13 +19,20 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+
     - name: Instalar dependencias
       run: |
+        echo "Instalando dependencias"
         cd 07-app-nodejs-docker
         npm install
 
-    - name: Ejecutar tests
+    - name: Ejecutar Test (app nodejs)
       run: |
+        echo "Ejecutando Test"
         cd 07-app-nodejs-docker
         npm test
 
