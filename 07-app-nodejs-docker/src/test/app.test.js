@@ -1,7 +1,9 @@
-// tests/app.test.js
+jest.mock('../db/index');      // mock de PostgreSQL
+jest.mock('../cache/index');  // mock de Redis
+
 const request = require('supertest');
 const express = require('express');
-const routes = require('../routes/index');
+const routes = require('../routes/index'); // <-- ahora ya no carga conexiones reales
 
 const app = express();
 app.use('/api', routes);
