@@ -47,4 +47,6 @@ jobs:
 
     - name: Run Ansible Playbook
       run: |
+        echo "Running Ansible Playbook"
+        cd 08-test-ansible-playbook
         ansible-playbook playbook.yml -i localhost, -c local
