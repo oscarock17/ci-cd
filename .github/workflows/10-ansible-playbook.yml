@@ -18,6 +18,9 @@ jobs:
 
     - name: Setup Ansible Lint
       uses: ansible/ansible-lint@main
+      with:
+        args: playbook.yml
+        working_directory: 08-test-ansible-playbook
 
     - name: Run Ansible Lint
       run: |
