@@ -4,17 +4,12 @@
   become: true
 
   tasks:
-    - name: Instalar paquete tree
-      ansible.builtin.apt:
-        name: tree
+    - name: Instalar paquetes esenciales
+      apt:
+        name:
+          - tree
         state: present
         update_cache: yes
 
     - name: Verificar instalación de tree
-      ansible.builtin.command: tree --version
-      register: tree_version
-      changed_when: false
-
-    - name: Mostrar versión de tree
-      ansible.builtin.debug:
-        var: tree_version.stdout
+      shell: tree --version
