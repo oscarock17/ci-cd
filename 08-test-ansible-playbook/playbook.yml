@@ -4,10 +4,9 @@
   become: true
 
   tasks:
-    - name: Instalar paquetes esenciales
-      apt:
-        name:
-          - tree
+    - name: Instalar paquete tree
+      ansible.builtin.apt:
+        name: tree
         state: present
         update_cache: yes
 
