@@ -22,8 +22,7 @@ jobs:
     - name: Run Ansible Lint
       run: |
         echo "Running Ansible Lint"
-        cd 08-test-ansible-playbook
-        ansible-lint playbook.yml
+        ansible-lint 08-test-ansible-playbook/playbook.yml
 
   run-playbook:
     runs-on: self-hosted
