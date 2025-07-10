@@ -1,4 +1,4 @@
-name: Run Ansible Playbook
+name: 10-Run Ansible Playbook
 description: Run Ansible Playbook to deploy application
 
 on:
