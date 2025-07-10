@@ -17,6 +17,7 @@ Este repositorio contiene una serie de ejercicios prácticos para aprender e imp
 | 07 | `07-self-hosted-test.yml` | Ejecución de un job en un runner self-hosted para pruebas locales. |
 | 08 | `08-docker-en-runner.yml` | Construcción y despliegue de contenedores Docker en un runner self-hosted usando `docker-compose`. |
 | 09 | `09-app-nodejs-docker.yml` | Pipeline completo de build y despliegue para una aplicación Node.js con Docker y pruebas de salud. |
+| 10 | `10-ansible-playbook.yml` | Pipeline para ejecutar un playbook en ansible. |
 
 ---
 
