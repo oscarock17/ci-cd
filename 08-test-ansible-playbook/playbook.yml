@@ -1,0 +1,15 @@
+---
+- name: Configuración de prueba de Ansible Playbook
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: Instalar paquetes esenciales
+      apt:
+        name: ["tree"]
+        state: present
+        update_cache: yes
+
+    - name: Verificar instalación de tree
+      command: tree --version
+      
