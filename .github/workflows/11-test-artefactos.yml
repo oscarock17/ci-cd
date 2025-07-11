@@ -1,0 +1,44 @@
+name: 11-Test artefactos
+description: "Workflow para probar artefactos"
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - '.github/workflows/11-test-artefactos.yml'
+      - '11-test-artefactos/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Simular build
+      run: |
+        mkdir -p build
+        echo "Simulando build de artefactos" > build/artifact.txt
+
+    - name: Subir artefactos
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-app
+        path: build/artifact.txt
+        retention-days: 7 #por defecto 90 días
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Descargar artefactos
+        uses: actions/download-artifact@v4
+        with:
+          name: build-app
+
+      - name: Mostrar contenido del artefacto
+        run: |
+          echo "Contenido del artefacto:"
+          cat artifact.txt
