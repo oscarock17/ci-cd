@@ -1,4 +1,4 @@
-name: CI/CD - Develop to Staging
+name: 9.02-CI/CD Develop to Staging
 
 on:
   push:
