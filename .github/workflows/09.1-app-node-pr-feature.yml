@@ -1,0 +1,38 @@
+name: 09.1-PR Validation Feature to Develop
+description: Validate PRs to develop branch for Node.js app
+
+on:
+  pull_request:
+    branches: [develop]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+
+    - name: Cache node modules
+      uses: actions/cache@v4
+      with:
+        path: 07-app-nodejs-docker/node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('07-app-nodejs-docker/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install dependencies
+      run: |
+        cd 07-app-nodejs-docker
+        npm install
+
+    - name: Run tests
+      run: |
+        cd 07-app-nodejs-docker
+        npm test
