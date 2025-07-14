@@ -36,3 +36,14 @@ jobs:
       run: |
         cd 07-app-nodejs-docker
         npm test
+
+    - name: Merge PR into develop if tests pass
+      if: success()
+      env:
+        GH_TOKEN: ${{ secrets.GH_PAT }}
+      run: |
+        gh pr merge ${{ github.event.pull_request.number }} \
+          --merge \
+          --admin \
+          --repo ${{ github.repository }} \
+          --body "Auto-merged by GitHub Actions after passing tests"
