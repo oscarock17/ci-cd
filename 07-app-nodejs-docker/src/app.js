@@ -10,7 +10,7 @@ app.use(express.json());
 
 db.connect()
   .then(() => {
-    console.log('Connected to PostgreSQL database');
+    console.log('Connected to PostgreSQL database.');
   })
   .catch(err => {
     console.error('Database connection error:', err);
@@ -18,7 +18,7 @@ db.connect()
 
 cache.connect()
   .then(() => {
-    console.log('Connected to Redis cache');
+    console.log('Connected to Redis cache.');
   })
   .catch(err => {
     console.error('Cache connection error:', err);
@@ -27,5 +27,5 @@ cache.connect()
 app.use('/api', routes);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}.`);
 });
